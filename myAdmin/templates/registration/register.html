@@ -1,0 +1,85 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>myDoctor - Register</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feathericon.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+
+</head>
+
+<div class="header" style="position: sticky;">
+
+    <!-- Logo -->
+    <div class="header-left">
+        <a href="index2.html" class="logo">
+            <h1 class="logo-padding">myDoctor</h1>
+        </a>
+        <a href="index.html" class="logo logo-small">
+            <h4 class="logo-padding">myDoctor</h4>
+        </a>
+    </div>
+    <!-- /Logo -->
+
+
+
+    <!-- Mobile Menu Toggle -->
+    <a class="mobile_btn" id="mobile_btn">
+        <i class="fa fa-bars"></i>
+    </a>
+    <!-- /Mobile Menu Toggle -->
+
+
+</div>
+<form class="form-material" method="POST" action="{% url 'register' %}">
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+    {% csrf_token %}
+    <div class="body">
+        <div class="form-group form-float" style="margin-left: auto;">
+            <div class="form-line" >
+              {% crispy form %}
+            </div>
+        </div>
+        
+
+        <input type="submit" class="btn btn-outline-primary btn-sm pl-4 pr-4"
+               value="Sign Up">
+               <input type="hidden" name="next" value="{{ next }}">
+
+        <div class="pt-5">
+            <small><a href="#">Forgot Password?</a></small>
+        </div>
+    </div>
+    <!-- #END# Input -->
+</form>
+
+
+
+{% endblock %}
+

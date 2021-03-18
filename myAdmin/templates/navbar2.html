@@ -1,0 +1,71 @@
+{% block content %}
+
+<div class="main-wrapper">
+
+    <!-- Header -->
+    <div class="header">
+
+        <!-- Logo -->
+        <div class="header-left">
+            <a href="index2.html" class="logo">
+                <h1 class="logo-padding">myDoctor</h1>
+            </a>
+            <a href="index.html" class="logo logo-small">
+                <h4 class="logo-padding">myDoctor</h4>
+            </a>
+        </div>
+        <!-- /Logo -->
+
+
+
+        <!-- Mobile Menu Toggle -->
+        <a class="mobile_btn" id="mobile_btn">
+            <i class="fa fa-bars"></i>
+        </a>
+        <!-- /Mobile Menu Toggle -->
+
+
+    </div>
+    <!-- /Header -->
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-inner slimscroll">
+            <div id="sidebar-menu" class="sidebar-menu">
+                <ul class="pane">
+                    <li class="active">
+                        <a href="{% url 'admin' %}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'doclist' %}"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
+                    </li>
+                    <li>
+                        <a href="patient-list.html"><i class="fe fe-user"></i> <span>Patients</span></a>
+                    </li>
+
+                    <li>
+                        <a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+                    </li>
+
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+        $('.pane li').click(function(e) {
+    
+            $('.pane li.active').removeClass('active');
+    
+            var $parent = $(this).children();
+            $parent.addClass('active');
+            e.preventDefault();
+        });
+    });
+    </script>
+    <!-- /Sidebar -->
+
+{% endblock %}
